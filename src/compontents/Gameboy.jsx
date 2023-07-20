@@ -1,11 +1,20 @@
 import * as THREE from 'three';
 import { useGLTF } from '@react-three/drei';
-
-import React from 'react';
-import { useControls } from 'leva';
+import { useControls, button } from 'leva';
+import { useRef } from 'react';
 
 const Gameboy = () => {
-  const { nodes } = useGLTF('models/gameboy.glb');
+  /**
+   * Debug
+   */
+  const animationTrigger = useControls('Animations', {
+    next: button(() => {
+      joystickRef.current.rotation.z -= 0.2;
+    }),
+    prev: button(() => {
+      joystickRef.current.rotation.z += 0.2;
+    })
+  });
 
   const debugColor = useControls('Colors', {
     gameboy: '#f7f7f7',
@@ -15,7 +24,21 @@ const Gameboy = () => {
     screenBorder: '#a9a9a9',
     controls: '#333333'
   });
+  //-- End Debug
 
+  /**
+   * Refs
+   */
+  const joystickRef = useRef();
+
+  /**
+   * Models
+   */
+  const { nodes } = useGLTF('models/gameboy.glb');
+
+  /**
+   * Materials
+   */
   const gameboyMaterial = new THREE.MeshStandardMaterial({
     color: debugColor.gameboy,
     roughness: 0.5
@@ -68,6 +91,7 @@ const Gameboy = () => {
 
       {/* Gameboy - JoyStick */}
       <mesh
+        ref={joystickRef}
         castShadow
         receiveShadow
         geometry={nodes.gameboyJoystick.geometry}
