@@ -1,7 +1,7 @@
+import { useRef } from 'react';
 import * as THREE from 'three';
 import { useGLTF } from '@react-three/drei';
 import { useControls, button } from 'leva';
-import { useRef } from 'react';
 import { gsap } from 'gsap';
 
 const Gameboy = () => {
