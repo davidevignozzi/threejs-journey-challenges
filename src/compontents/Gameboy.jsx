@@ -23,6 +23,8 @@ const Gameboy = () => {
     secondaryButtons: '#333333',
     joystick: '#333333',
     screenBorder: '#a9a9a9',
+    screen: '#4dff4d',
+    // screen: [1.5, 1, 4],
     controls: '#333333'
   });
   //-- End Debug
@@ -63,6 +65,14 @@ const Gameboy = () => {
   const screenBorderMaterial = new THREE.MeshStandardMaterial({
     color: debugColor.screenBorder,
     roughness: 0.5
+  });
+
+  const screenMaterial = new THREE.MeshStandardMaterial({
+    color: debugColor.screen,
+    emissive: debugColor.screen,
+    emissiveIntensity: 0.75,
+    roughness: 0.5,
+    toneMapped: false
   });
 
   /**
@@ -109,7 +119,7 @@ const Gameboy = () => {
         castShadow
         receiveShadow
         geometry={nodes.gameboyScreen.geometry}
-        material={nodes.gameboyScreen.material}
+        material={screenMaterial}
         position={nodes.gameboyScreen.position}
         scale={nodes.gameboyScreen.scale}
       />
