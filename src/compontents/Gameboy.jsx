@@ -2,6 +2,7 @@ import * as THREE from 'three';
 import { useGLTF } from '@react-three/drei';
 import { useControls, button } from 'leva';
 import { useRef } from 'react';
+import { gsap } from 'gsap';
 
 const Gameboy = () => {
   /**
@@ -9,10 +10,10 @@ const Gameboy = () => {
    */
   const animationTrigger = useControls('Animations', {
     next: button(() => {
-      joystickRef.current.rotation.z -= 0.2;
+      nextAnimation();
     }),
     prev: button(() => {
-      joystickRef.current.rotation.z += 0.2;
+      prevAnimation();
     })
   });
 
@@ -63,6 +64,30 @@ const Gameboy = () => {
     color: debugColor.screenBorder,
     roughness: 0.5
   });
+
+  /**
+   * Animations
+   */
+
+  const nextAnimation = () => {
+    gsap.to(joystickRef?.current?.rotation, {
+      z: -0.125,
+      duration: 0.35,
+      repeat: 1,
+      yoyo: true,
+      ease: 'power1.in'
+    });
+  };
+
+  const prevAnimation = () => {
+    gsap.to(joystickRef?.current?.rotation, {
+      z: 0.125,
+      duration: 0.35,
+      repeat: 1,
+      yoyo: true,
+      ease: 'power1.in'
+    });
+  };
 
   return (
     <group dispose={null}>
