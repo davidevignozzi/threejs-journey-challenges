@@ -16,7 +16,7 @@ function App() {
   return (
     <>
       <Leva collapsed />
-      <Canvas shadows camera={{ position: [3, 3, 3], fov: 30 }}>
+      <Canvas shadows camera={{ position: [5, 5, 5], fov: 30 }}>
         <color attach="background" args={['#333333']} />
         {perfVisible && <Perf position="top-left" />}
         <Suspense fallback={null}>

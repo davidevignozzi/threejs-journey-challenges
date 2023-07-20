@@ -1,4 +1,4 @@
-import { Environment, OrbitControls } from '@react-three/drei';
+import { Center, Environment, OrbitControls } from '@react-three/drei';
 import { Bloom, EffectComposer } from '@react-three/postprocessing';
 import Gameboy from './Gameboy';
 
@@ -10,7 +10,9 @@ const Experience = () => {
         <Bloom mipmapBlur />
       </EffectComposer>
       <OrbitControls />
-      <Gameboy />
+      <Center>
+        <Gameboy />
+      </Center>
     </>
   );
 };
