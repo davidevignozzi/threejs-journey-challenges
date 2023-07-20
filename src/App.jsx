@@ -2,6 +2,8 @@ import { Canvas } from '@react-three/fiber';
 import Experience from './compontents/Experience';
 import { Leva, useControls } from 'leva';
 import { Perf } from 'r3f-perf';
+import { Suspense } from 'react';
+import { Loader } from '@react-three/drei';
 
 function App() {
   /**
@@ -17,8 +19,11 @@ function App() {
       <Canvas shadows camera={{ position: [3, 3, 3], fov: 30 }}>
         <color attach="background" args={['#ececec']} />
         {perfVisible && <Perf position="top-left" />}
-        <Experience />
+        <Suspense fallback={null}>
+          <Experience />
+        </Suspense>
       </Canvas>
+      <Loader />
     </>
   );
 }

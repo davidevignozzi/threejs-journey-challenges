@@ -1,14 +1,12 @@
-import { OrbitControls } from '@react-three/drei';
+import { Environment, OrbitControls } from '@react-three/drei';
+import Gameboy from './Gameboy';
 
 const Experience = () => {
   return (
     <>
       <OrbitControls />
-
-      <mesh>
-        <boxGeometry />
-        <meshNormalMaterial />
-      </mesh>
+      <Environment preset="apartment" />
+      <Gameboy />
     </>
   );
 };
