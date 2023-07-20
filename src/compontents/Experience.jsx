@@ -1,4 +1,4 @@
-import { Environment, OrbitControls } from '@react-three/drei';
+import { Backdrop, Environment, OrbitControls } from '@react-three/drei';
 import Gameboy from './Gameboy';
 
 const Experience = () => {
@@ -6,6 +6,7 @@ const Experience = () => {
     <>
       <OrbitControls />
       <Environment preset="apartment" />
+
       <Gameboy />
     </>
   );
