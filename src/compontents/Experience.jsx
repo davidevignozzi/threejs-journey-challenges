@@ -1,8 +1,9 @@
-import { Center, OrbitControls, Stage } from '@react-three/drei';
+import { OrbitControls, Stage } from '@react-three/drei';
 import { Bloom, EffectComposer } from '@react-three/postprocessing';
-import Gameboy from './Gameboy';
 import { useFrame } from '@react-three/fiber';
 import { useControls } from 'leva';
+import Gameboy from './Gameboy';
+import DragonEvolved from './DragonEvolved';
 
 const Experience = () => {
   /**
@@ -26,17 +27,16 @@ const Experience = () => {
         <Bloom mipmapBlur luminanceThreshold={1.25} />
       </EffectComposer>
 
-      <Center>
-        <Stage
-          shadows="contact"
-          adjustCamera={5}
-          environment="apartment"
-          preset="soft"
-          intensity={0.2}
-        >
-          <Gameboy />
-        </Stage>
-      </Center>
+      <Stage
+        shadows="contact"
+        adjustCamera={5}
+        intensity={0.2}
+        environment="apartment"
+        preset="soft"
+      >
+        <Gameboy />
+        <DragonEvolved />
+      </Stage>
     </>
   );
 };
