@@ -8,15 +8,6 @@ const Gameboy = () => {
   /**
    * Debug
    */
-  const animationTrigger = useControls('Animations', {
-    next: button(() => {
-      nextAnimation();
-    }),
-    prev: button(() => {
-      prevAnimation();
-    })
-  });
-
   const debugColor = useControls('Colors', {
     gameboy: '#f7f7f7',
     primaryButtons: '#c13333',
@@ -26,6 +17,15 @@ const Gameboy = () => {
     screen: '#4dff4d',
     // screen: [1.5, 1, 4],
     controls: '#333333'
+  });
+
+  const animationTrigger = useControls('Animations', {
+    next: button(() => {
+      nextAnimation();
+    }),
+    prev: button(() => {
+      prevAnimation();
+    })
   });
   //-- End Debug
 
