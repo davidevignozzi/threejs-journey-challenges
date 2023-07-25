@@ -49,8 +49,9 @@ const DragonEvolved = () => {
      * Make it Fly from the screen
      */
     gsap.to(dragonRef.current.position, {
-      y: 2,
-      duration: 1.5
+      y: 2.5,
+      duration: 1.25,
+      ease: 'power1.out'
     });
   };
 
@@ -59,7 +60,7 @@ const DragonEvolved = () => {
    */
   const hideAnimation = () => {
     /**
-     * Make it Appear
+     * Make it Disappear
      */
     gsap.to(dragonRef.current.scale, {
       x: 0,
@@ -68,11 +69,12 @@ const DragonEvolved = () => {
     });
 
     /**
-     * Make it Fly from the screen
+     * Make it Return in the screen
      */
     gsap.to(dragonRef.current.position, {
       y: -0.5,
-      duration: 1.5
+      duration: 1.25,
+      ease: 'power1.out'
     });
   };
 
