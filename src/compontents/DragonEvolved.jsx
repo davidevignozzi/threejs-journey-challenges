@@ -2,10 +2,13 @@ import React, { useEffect, useRef } from 'react';
 import { useGLTF, useAnimations } from '@react-three/drei';
 import { button, useControls } from 'leva';
 import { gsap } from 'gsap';
+import { useFrame } from '@react-three/fiber';
 
 const DragonEvolved = () => {
   const group = useRef();
   const dragonRef = useRef();
+  const dragonPositionRef = useRef();
+
   const { nodes, materials, animations } = useGLTF(
     './models/Dragon_Evolved.gltf'
   );
@@ -31,6 +34,14 @@ const DragonEvolved = () => {
     actions[anim].reset().fadeIn(0.5).play();
     return () => actions[anim].fadeOut(0.5);
   }, []);
+
+  /**
+   * Mooving animation
+   */
+  useFrame((state) => {
+    const eTime = state.clock.getElapsedTime();
+    dragonPositionRef.current.position.y = Math.sin(eTime * 2) * 0.25;
+  });
 
   /**
    * Enter Animation
@@ -80,7 +91,7 @@ const DragonEvolved = () => {
 
   return (
     <group ref={group} dispose={null}>
-      <group name="Scene">
+      <group ref={dragonPositionRef} name="Scene">
         <group ref={dragonRef} position-y={-0.5} scale={0}>
           <group name="Dragon">
             <skinnedMesh

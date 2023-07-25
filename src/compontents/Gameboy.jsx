@@ -20,7 +20,7 @@ const Gameboy = () => {
   });
 
   // Trigger Animation
-  const animationTrigger = useControls('Animations', {
+  const animationTrigger = useControls('Animations Joystick', {
     next: button(() => {
       nextAnimation();
     }),
