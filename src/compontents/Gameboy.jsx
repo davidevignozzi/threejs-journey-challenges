@@ -8,6 +8,7 @@ const Gameboy = () => {
   /**
    * Debug
    */
+  // Colors
   const debugColor = useControls('Colors', {
     gameboy: '#f7f7f7',
     primaryButtons: '#c13333',
@@ -15,10 +16,10 @@ const Gameboy = () => {
     joystick: '#333333',
     screenBorder: '#a9a9a9',
     screen: '#4dff4d',
-    // screen: [1.5, 1, 4],
     controls: '#333333'
   });
 
+  // Trigger Animation
   const animationTrigger = useControls('Animations', {
     next: button(() => {
       nextAnimation();
@@ -100,9 +101,14 @@ const Gameboy = () => {
   };
 
   return (
-    <group dispose={null}>
+    <group position-y={-0.5} dispose={null}>
       {/* Gameboy */}
-      <mesh castShadow receiveShadow geometry={nodes.gameboy.geometry} material={gameboyMaterial} />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.gameboy.geometry}
+        material={gameboyMaterial}
+      />
 
       {/* Gameboy - Screen Borer */}
       <mesh
