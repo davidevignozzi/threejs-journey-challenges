@@ -41,6 +41,8 @@ const DragonEvolved = () => {
   useFrame((state) => {
     const eTime = state.clock.getElapsedTime();
     dragonPositionRef.current.position.y = Math.sin(eTime * 2) * 0.25;
+    dragonPositionRef.current.position.x = Math.cos(eTime * 2) * 0.25;
+    dragonPositionRef.current.position.z = Math.sin(eTime * 2) * 0.25;
   });
 
   /**
