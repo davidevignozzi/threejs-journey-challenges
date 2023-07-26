@@ -1,4 +1,5 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import * as THREE from 'three';
 import { useGLTF, useAnimations } from '@react-three/drei';
 import { button, useControls } from 'leva';
 import { gsap } from 'gsap';
@@ -8,6 +9,8 @@ const DragonEvolved = () => {
   const group = useRef();
   const dragonRef = useRef();
   const dragonPositionRef = useRef();
+
+  const [smoothCameraTarget] = useState(() => new THREE.Vector3());
 
   const { nodes, materials, animations } = useGLTF(
     './models/Dragon_Evolved.gltf'
@@ -38,11 +41,22 @@ const DragonEvolved = () => {
   /**
    * Mooving animation
    */
-  useFrame((state) => {
+  useFrame((state, delta) => {
     const eTime = state.clock.getElapsedTime();
     dragonPositionRef.current.position.y = Math.sin(eTime * 2) * 0.25;
     dragonPositionRef.current.position.x = Math.cos(eTime * 2) * 0.25;
     dragonPositionRef.current.position.z = Math.sin(eTime * 2) * 0.25;
+
+    /**
+     * Camera
+     */
+    const dragonPosition = dragonRef.current.position;
+    const cameraTarget = new THREE.Vector3();
+
+    cameraTarget.copy(dragonPosition);
+    smoothCameraTarget.lerp(dragonPosition, 5 * delta);
+
+    state.camera.lookAt(smoothCameraTarget);
   });
 
   /**
@@ -55,7 +69,8 @@ const DragonEvolved = () => {
     gsap.to(dragonRef.current.scale, {
       x: 0.5,
       y: 0.5,
-      z: 0.5
+      z: 0.5,
+      ease: 'power0.out'
     });
 
     /**
@@ -78,14 +93,15 @@ const DragonEvolved = () => {
     gsap.to(dragonRef.current.scale, {
       x: 0,
       y: 0,
-      z: 0
+      z: 0,
+      ease: 'power4.in'
     });
 
     /**
      * Make it Return in the screen
      */
     gsap.to(dragonRef.current.position, {
-      y: -0.5,
+      y: 0,
       duration: 1.25,
       ease: 'power1.out'
     });
@@ -94,7 +110,7 @@ const DragonEvolved = () => {
   return (
     <group ref={group} dispose={null}>
       <group ref={dragonPositionRef} name="Scene">
-        <group ref={dragonRef} position-y={-0.5} scale={0}>
+        <group ref={dragonRef} scale={0}>
           <group name="Dragon">
             <skinnedMesh
               name="Cube221"
