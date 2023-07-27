@@ -100,6 +100,10 @@ const Tetris = ({
         temporaryArr.push(randomItem);
         setBlocks(temporaryArr);
       }
+    }),
+
+    hideAllBlocks: button(() => {
+      setBlocks([]);
     })
   });
 
