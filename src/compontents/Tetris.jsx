@@ -1,3 +1,5 @@
+import { RigidBody } from '@react-three/rapier';
+
 const scale = 0.5;
 const positionY = 4;
 
@@ -12,56 +14,66 @@ const Block = ({ positionX = 0, positionY = 0 }) => {
 
 const IBlock = () => {
   return (
-    <group position-y={positionY}>
-      <Block positionY={scale * 2} />
-      <Block positionY={scale} />
-      <Block />
-      <Block positionY={-scale} />
-    </group>
+    <RigidBody>
+      <group position-y={positionY}>
+        <Block positionY={scale * 2} />
+        <Block positionY={scale} />
+        <Block />
+        <Block positionY={-scale} />
+      </group>
+    </RigidBody>
   );
 };
 
 const TBlock = () => {
   return (
-    <group position-y={positionY}>
-      <Block positionX={scale} />
-      <Block positionX={-scale} />
-      <Block />
-      <Block positionY={-scale} />
-    </group>
+    <RigidBody>
+      <group position-y={positionY}>
+        <Block positionX={scale} />
+        <Block positionX={-scale} />
+        <Block />
+        <Block positionY={-scale} />
+      </group>
+    </RigidBody>
   );
 };
 
 const JBlock = () => {
   return (
-    <group position-y={positionY}>
-      <Block positionY={scale} />
-      <Block />
-      <Block positionX={scale} />
-      <Block positionX={scale * 2} />
-    </group>
+    <RigidBody>
+      <group position-y={positionY}>
+        <Block positionY={scale} />
+        <Block />
+        <Block positionX={scale} />
+        <Block positionX={scale * 2} />
+      </group>
+    </RigidBody>
   );
 };
 
 const OBlock = () => {
   return (
-    <group position-x={-0.25} position-y={positionY}>
-      <Block />
-      <Block positionX={scale} />
-      <Block positionX={scale} positionY={scale} />
-      <Block positionY={scale} />
-    </group>
+    <RigidBody>
+      <group position-x={-0.25} position-y={positionY}>
+        <Block />
+        <Block positionX={scale} />
+        <Block positionX={scale} positionY={scale} />
+        <Block positionY={scale} />
+      </group>
+    </RigidBody>
   );
 };
 
 const SBlock = () => {
   return (
-    <group position-y={positionY}>
-      <Block positionX={-scale} positionY={scale} />
-      <Block positionY={scale} />
-      <Block />
-      <Block positionX={scale} />
-    </group>
+    <RigidBody>
+      <group position-y={positionY}>
+        <Block positionX={-scale} positionY={scale} />
+        <Block positionY={scale} />
+        <Block />
+        <Block positionX={scale} />
+      </group>
+    </RigidBody>
   );
 };
 

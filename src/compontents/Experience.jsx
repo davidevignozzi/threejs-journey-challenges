@@ -1,8 +1,8 @@
-import { OrbitControls, Stage } from '@react-three/drei';
+import { Environment, OrbitControls } from '@react-three/drei';
 import { Bloom, EffectComposer } from '@react-three/postprocessing';
-import { useFrame } from '@react-three/fiber';
-import { useControls } from 'leva';
+import { Physics } from '@react-three/rapier';
 import Gameboy from './Gameboy';
+import Base from './Base';
 import DragonEvolved from './DragonEvolved';
 import Tetris from './Tetris';
 
@@ -24,21 +24,18 @@ const Experience = () => {
     <>
       <OrbitControls />
 
+      <Environment preset="apartment" />
+
       <EffectComposer>
         <Bloom mipmapBlur luminanceThreshold={1.25} />
       </EffectComposer>
 
-      <Stage
-        shadows="contact"
-        adjustCamera={5}
-        intensity={0.2}
-        environment="apartment"
-        preset="soft"
-      >
+      <Physics debug>
+        <Base />
         <Gameboy />
         <DragonEvolved />
         <Tetris />
-      </Stage>
+      </Physics>
     </>
   );
 };

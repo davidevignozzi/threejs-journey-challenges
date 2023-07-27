@@ -10,13 +10,13 @@ function App() {
    * Tweek it in leva to make Perf Visible
    */
   const { perfVisible } = useControls({
-    perfVisible: false
+    perfVisible: true
   });
 
   return (
     <>
       <Leva collapsed />
-      <Canvas shadows camera={{ position: [5, 5, 5], fov: 30 }}>
+      <Canvas shadows camera={{ position: [10, 5, 10], fov: 30 }}>
         <color attach="background" args={['#333333']} />
         {perfVisible && <Perf position="top-left" />}
         <Suspense fallback={null}>
