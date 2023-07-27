@@ -4,6 +4,7 @@ import { useFrame } from '@react-three/fiber';
 import { useControls } from 'leva';
 import Gameboy from './Gameboy';
 import DragonEvolved from './DragonEvolved';
+import Tetris from './Tetris';
 
 const Experience = () => {
   /**
@@ -36,6 +37,7 @@ const Experience = () => {
       >
         <Gameboy />
         <DragonEvolved />
+        <Tetris />
       </Stage>
     </>
   );
