@@ -102,7 +102,7 @@ const Gameboy = () => {
   };
 
   return (
-    <RigidBody>
+    <RigidBody type="fixed">
       <group position-y={-0.5} dispose={null}>
         {/* Gameboy */}
         <mesh

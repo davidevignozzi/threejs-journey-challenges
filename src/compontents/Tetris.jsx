@@ -1,5 +1,6 @@
 import { RigidBody } from '@react-three/rapier';
-import { useMemo } from 'react';
+import { button, useControls } from 'leva';
+import { useMemo, useState } from 'react';
 
 const scale = 0.5;
 const positionY = 4;
@@ -87,17 +88,20 @@ const Tetris = ({
 }) => {
   /**
    * Generate an array of random blocks
+   * every time that the user press the button
    */
-  const blocks = useMemo(() => {
-    const blocks = [];
+  const [blocks, setBlocks] = useState([]);
 
-    for (let i = 0; i < count; i++) {
-      const type = types[Math.floor(Math.random() * types.length)];
-      blocks.push(type);
-    }
-
-    return blocks;
-  }, [count, types]);
+  const tetrisAnimation = useControls('Animation Tetris', {
+    fall: button(() => {
+      const temporaryArr = [];
+      for (let i = 0; i < count; i++) {
+        const randomItem = types[Math.floor(Math.random() * types.length)];
+        temporaryArr.push(randomItem);
+        setBlocks(temporaryArr);
+      }
+    })
+  });
 
   return (
     <group>
