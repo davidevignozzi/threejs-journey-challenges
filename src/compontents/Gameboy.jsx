@@ -3,6 +3,7 @@ import * as THREE from 'three';
 import { useGLTF } from '@react-three/drei';
 import { useControls, button } from 'leva';
 import { gsap } from 'gsap';
+import { RigidBody } from '@react-three/rapier';
 
 const Gameboy = () => {
   /**
@@ -101,98 +102,100 @@ const Gameboy = () => {
   };
 
   return (
-    <group position-y={-0.5} dispose={null}>
-      {/* Gameboy */}
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.gameboy.geometry}
-        material={gameboyMaterial}
-      />
+    <RigidBody>
+      <group position-y={-0.5} dispose={null}>
+        {/* Gameboy */}
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.gameboy.geometry}
+          material={gameboyMaterial}
+        />
 
-      {/* Gameboy - Screen Borer */}
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.gameboyScreenBorder.geometry}
-        material={screenBorderMaterial}
-        position={nodes.gameboyScreenBorder.position}
-        scale={nodes.gameboyScreenBorder.scale}
-      />
+        {/* Gameboy - Screen Borer */}
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.gameboyScreenBorder.geometry}
+          material={screenBorderMaterial}
+          position={nodes.gameboyScreenBorder.position}
+          scale={nodes.gameboyScreenBorder.scale}
+        />
 
-      {/* Gameboy - Screen */}
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.gameboyScreen.geometry}
-        material={screenMaterial}
-        position={nodes.gameboyScreen.position}
-        scale={nodes.gameboyScreen.scale}
-      />
+        {/* Gameboy - Screen */}
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.gameboyScreen.geometry}
+          material={screenMaterial}
+          position={nodes.gameboyScreen.position}
+          scale={nodes.gameboyScreen.scale}
+        />
 
-      {/* Gameboy - JoyStick */}
-      <mesh
-        ref={joystickRef}
-        castShadow
-        receiveShadow
-        geometry={nodes.gameboyJoystick.geometry}
-        material={joystickMaterial}
-        position={nodes.gameboyJoystick.position}
-        scale={nodes.gameboyJoystick.scale}
-      />
+        {/* Gameboy - JoyStick */}
+        <mesh
+          ref={joystickRef}
+          castShadow
+          receiveShadow
+          geometry={nodes.gameboyJoystick.geometry}
+          material={joystickMaterial}
+          position={nodes.gameboyJoystick.position}
+          scale={nodes.gameboyJoystick.scale}
+        />
 
-      {/* Gameboy - A */}
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.gameboyA.geometry}
-        material={primaryButtonsMaterial}
-        position={nodes.gameboyA.position}
-        scale={nodes.gameboyA.scale}
-      />
+        {/* Gameboy - A */}
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.gameboyA.geometry}
+          material={primaryButtonsMaterial}
+          position={nodes.gameboyA.position}
+          scale={nodes.gameboyA.scale}
+        />
 
-      {/* Gameboy - B */}
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.gameboyB.geometry}
-        material={primaryButtonsMaterial}
-        position={nodes.gameboyB.position}
-        scale={nodes.gameboyB.scale}
-      />
+        {/* Gameboy - B */}
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.gameboyB.geometry}
+          material={primaryButtonsMaterial}
+          position={nodes.gameboyB.position}
+          scale={nodes.gameboyB.scale}
+        />
 
-      {/* Gameboy - Start */}
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.gameboyStart.geometry}
-        material={secondaryButtonsMaterial}
-        position={nodes.gameboyStart.position}
-        rotation={nodes.gameboyStart.rotation}
-        scale={nodes.gameboyStart.scale}
-      />
+        {/* Gameboy - Start */}
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.gameboyStart.geometry}
+          material={secondaryButtonsMaterial}
+          position={nodes.gameboyStart.position}
+          rotation={nodes.gameboyStart.rotation}
+          scale={nodes.gameboyStart.scale}
+        />
 
-      {/* Gameboy - Select */}
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.gameboySelect.geometry}
-        material={secondaryButtonsMaterial}
-        position={nodes.gameboySelect.position}
-        rotation={nodes.gameboySelect.rotation}
-        scale={nodes.gameboySelect.scale}
-      />
+        {/* Gameboy - Select */}
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.gameboySelect.geometry}
+          material={secondaryButtonsMaterial}
+          position={nodes.gameboySelect.position}
+          rotation={nodes.gameboySelect.rotation}
+          scale={nodes.gameboySelect.scale}
+        />
 
-      {/* Gameboy - Battery */}
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.gameboyBattery.geometry}
-        material={nodes.gameboyBattery.material}
-        position={nodes.gameboyBattery.position}
-        scale={nodes.gameboyBattery.scale}
-      />
-    </group>
+        {/* Gameboy - Battery */}
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.gameboyBattery.geometry}
+          material={nodes.gameboyBattery.material}
+          position={nodes.gameboyBattery.position}
+          scale={nodes.gameboyBattery.scale}
+        />
+      </group>
+    </RigidBody>
   );
 };
 

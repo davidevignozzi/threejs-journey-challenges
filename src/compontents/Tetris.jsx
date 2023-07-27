@@ -14,65 +14,55 @@ const Block = ({ positionX = 0, positionY = 0 }) => {
 
 const IBlock = () => {
   return (
-    <RigidBody>
-      <group position-y={positionY}>
-        <Block positionY={scale * 2} />
-        <Block positionY={scale} />
-        <Block />
-        <Block positionY={-scale} />
-      </group>
+    <RigidBody position-y={positionY}>
+      <Block positionY={scale * 2} />
+      <Block positionY={scale} />
+      <Block />
+      <Block positionY={-scale} />
     </RigidBody>
   );
 };
 
 const TBlock = () => {
   return (
-    <RigidBody>
-      <group position-y={positionY}>
-        <Block positionX={scale} />
-        <Block positionX={-scale} />
-        <Block />
-        <Block positionY={-scale} />
-      </group>
+    <RigidBody position-y={positionY}>
+      <Block positionX={scale} />
+      <Block positionX={-scale} />
+      <Block />
+      <Block positionY={-scale} />
     </RigidBody>
   );
 };
 
 const JBlock = () => {
   return (
-    <RigidBody>
-      <group position-y={positionY}>
-        <Block positionY={scale} />
-        <Block />
-        <Block positionX={scale} />
-        <Block positionX={scale * 2} />
-      </group>
+    <RigidBody position-y={positionY}>
+      <Block positionY={scale} />
+      <Block />
+      <Block positionX={scale} />
+      <Block positionX={scale * 2} />
     </RigidBody>
   );
 };
 
 const OBlock = () => {
   return (
-    <RigidBody>
-      <group position-x={-0.25} position-y={positionY}>
-        <Block />
-        <Block positionX={scale} />
-        <Block positionX={scale} positionY={scale} />
-        <Block positionY={scale} />
-      </group>
+    <RigidBody position-x={-0.25} position-y={positionY}>
+      <Block />
+      <Block positionX={scale} />
+      <Block positionX={scale} positionY={scale} />
+      <Block positionY={scale} />
     </RigidBody>
   );
 };
 
 const SBlock = () => {
   return (
-    <RigidBody>
-      <group position-y={positionY}>
-        <Block positionX={-scale} positionY={scale} />
-        <Block positionY={scale} />
-        <Block />
-        <Block positionX={scale} />
-      </group>
+    <RigidBody position-y={positionY}>
+      <Block positionX={-scale} positionY={scale} />
+      <Block positionY={scale} />
+      <Block />
+      <Block positionX={scale} />
     </RigidBody>
   );
 };
