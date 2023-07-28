@@ -5,6 +5,7 @@ import Gameboy from './Gameboy';
 import Base from './Base';
 import DragonEvolved from './DragonEvolved';
 import Tetris from './Tetris';
+import SuperMario from './SuperMario';
 
 const Experience = () => {
   /**
@@ -35,6 +36,7 @@ const Experience = () => {
         <Gameboy />
         <DragonEvolved />
         <Tetris />
+        <SuperMario />
       </Physics>
     </>
   );
