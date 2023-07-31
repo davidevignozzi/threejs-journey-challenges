@@ -74,11 +74,15 @@ const Interface = () => {
 
   const handleNext = () => {
     clearAnimation();
+    setIsDragonInTheScene(false);
+    setIsTetrisInTheScene(false);
     nextGame();
   };
 
   const handlePrev = () => {
     clearAnimation();
+    setIsDragonInTheScene(false);
+    setIsTetrisInTheScene(false);
     prevGame();
   };
 

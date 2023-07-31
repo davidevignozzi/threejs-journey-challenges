@@ -130,8 +130,7 @@ const Tetris = ({
    * On click on animate button in Interface
    */
   useEffect(() => {
-    selectedAnimation === 'tetrisFall' && tetrisAnimation();
-    selectedAnimation === 'tetrisHide' && resetBlocks();
+    selectedAnimation === 'tetrisFall' ? tetrisAnimation() : resetBlocks();
   }, [selectedAnimation]);
 
   return (
