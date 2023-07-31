@@ -41,7 +41,7 @@ const Experience = () => {
     })
   });
 
-  console.log(gameIndex, gameSelected);
+  // console.log(gameIndex, gameSelected);
 
   return (
     <>

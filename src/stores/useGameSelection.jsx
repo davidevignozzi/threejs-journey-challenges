@@ -11,20 +11,7 @@ export default create((set) => {
 
     gameSelected: '',
 
-    nextGame: () =>
-      set((state) => {
-        if (state.gameIndex === state.games.length - 1) {
-          return {
-            gameIndex: 0,
-            gameSelected: state.games[0]
-          };
-        } else {
-          return {
-            gameIndex: state.gameIndex + 1,
-            gameSelected: state.games[state.gameIndex + 1]
-          };
-        }
-      }),
+    gameboyPrevOrNext: '',
 
     prevGame: () =>
       set((state) => {
@@ -37,6 +24,21 @@ export default create((set) => {
           return {
             gameIndex: state.gameIndex - 1,
             gameSelected: state.games[state.gameIndex - 1]
+          };
+        }
+      }),
+
+    nextGame: () =>
+      set((state) => {
+        if (state.gameIndex === state.games.length - 1) {
+          return {
+            gameIndex: 0,
+            gameSelected: state.games[0]
+          };
+        } else {
+          return {
+            gameIndex: state.gameIndex + 1,
+            gameSelected: state.games[state.gameIndex + 1]
           };
         }
       })
