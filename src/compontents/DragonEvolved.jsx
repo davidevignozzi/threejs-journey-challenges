@@ -4,6 +4,7 @@ import * as THREE from 'three';
 import { useFrame } from '@react-three/fiber';
 import { useGLTF, useAnimations } from '@react-three/drei';
 import { gsap } from 'gsap';
+import useGameSelection from '../stores/useGameSelection';
 
 const DragonEvolved = () => {
   /**
@@ -27,6 +28,12 @@ const DragonEvolved = () => {
   const dragonPositionRef = useRef();
 
   /**
+   * Use Game Selection
+   */
+  const gameSelected = useGameSelection((state) => state.gameSelected);
+  const selectedAnimation = useGameSelection((state) => state.animation);
+
+  /**
    * Model
    */
   const { nodes, materials, animations } = useGLTF(
@@ -47,21 +54,23 @@ const DragonEvolved = () => {
    * Mooving animation
    */
   useFrame((state, delta) => {
-    const eTime = state.clock.getElapsedTime();
-    dragonPositionRef.current.position.y = Math.sin(eTime * 2) * 0.25;
-    dragonPositionRef.current.position.x = Math.cos(eTime * 2) * 0.25;
-    dragonPositionRef.current.position.z = Math.sin(eTime * 2) * 0.25;
+    if (gameSelected === 'pokemon') {
+      const eTime = state.clock.getElapsedTime();
+      dragonPositionRef.current.position.y = Math.sin(eTime * 2) * 0.25;
+      dragonPositionRef.current.position.x = Math.cos(eTime * 2) * 0.25;
+      dragonPositionRef.current.position.z = Math.sin(eTime * 2) * 0.25;
 
-    /**
-     * Camera
-     */
-    const dragonPosition = dragonRef.current.position;
-    const cameraTarget = new THREE.Vector3();
+      /**
+       * Camera
+       */
+      const dragonPosition = dragonRef.current.position;
+      const cameraTarget = new THREE.Vector3();
 
-    cameraTarget.copy(dragonPosition);
-    smoothCameraTarget.lerp(dragonPosition, 5 * delta);
+      cameraTarget.copy(dragonPosition);
+      smoothCameraTarget.lerp(dragonPosition, 5 * delta);
 
-    state.camera.lookAt(smoothCameraTarget);
+      state.camera.lookAt(smoothCameraTarget);
+    }
   });
 
   /**
@@ -111,6 +120,14 @@ const DragonEvolved = () => {
       ease: 'power1.out'
     });
   };
+
+  /**
+   * On click on animate button in Interface
+   */
+  useEffect(() => {
+    selectedAnimation === 'dragonEnterAnimation' && enterAnimation();
+    selectedAnimation === 'dragonHideAnimation' && hideAnimation();
+  }, [selectedAnimation]);
 
   return (
     <group ref={group} dispose={null}>

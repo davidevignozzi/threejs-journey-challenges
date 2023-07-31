@@ -13,6 +13,8 @@ export default create((set) => {
 
     gameboyPrevOrNext: '',
 
+    animation: '',
+
     prevGame: () =>
       set((state) => {
         if (state.gameIndex === 0) {
@@ -41,6 +43,21 @@ export default create((set) => {
             gameSelected: state.games[state.gameIndex + 1]
           };
         }
-      })
+      }),
+
+    /**
+     * Animations
+     *
+     */
+    //Dragon
+    dragonEnterAnimation: () => set({ animation: 'dragonEnterAnimation' }),
+    dragonHideAnimation: () => set({ animation: 'dragonHideAnimation' }),
+
+    // Tetris
+    tetrisFall: () => set({ animation: 'tetrisFall' }),
+
+    // Super Mario
+    superMarioCubeAnimation: () =>
+      set({ animation: 'superMarioCubeAnimation' })
   };
 });

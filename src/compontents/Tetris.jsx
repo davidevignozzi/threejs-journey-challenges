@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { button, useControls } from 'leva';
 import { RigidBody } from '@react-three/rapier';
+import useGameSelection from '../stores/useGameSelection';
 
 const scale = 0.5;
 const positionY = 4;
@@ -92,7 +93,12 @@ const Tetris = ({
    */
   const [blocks, setBlocks] = useState([]);
 
-  const tetrisAnimation = useControls('Animation Tetris', {
+  /**
+   * Use Game Selection
+   */
+  const selectedAnimation = useGameSelection((state) => state.animation);
+
+  const tetrisAnimationDebug = useControls('Animation Tetris', {
     fall: button(() => {
       const temporaryArr = [];
       for (let i = 0; i < count; i++) {
@@ -106,6 +112,22 @@ const Tetris = ({
       setBlocks([]);
     })
   });
+
+  const tetrisAnimation = () => {
+    const temporaryArr = [];
+    for (let i = 0; i < count; i++) {
+      const randomItem = types[Math.floor(Math.random() * types.length)];
+      temporaryArr.push(randomItem);
+      setBlocks(temporaryArr);
+    }
+  };
+
+  /**
+   * On click on animate button in Interface
+   */
+  useEffect(() => {
+    selectedAnimation === 'tetrisFall' && tetrisAnimation();
+  }, [selectedAnimation]);
 
   return (
     <group>

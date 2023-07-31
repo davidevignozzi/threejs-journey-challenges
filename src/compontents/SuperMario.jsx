@@ -1,9 +1,10 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { button, useControls } from 'leva';
 import * as THREE from 'three';
 import { useFrame } from '@react-three/fiber';
 import { useGLTF } from '@react-three/drei';
 import { gsap } from 'gsap';
+import useGameSelection from '../stores/useGameSelection';
 
 const SuperMario = () => {
   /**
@@ -25,6 +26,12 @@ const SuperMario = () => {
    * Model
    */
   const { nodes } = useGLTF('/models/mario.glb');
+
+  /**
+   * Use Game Selection
+   */
+  const gameSelected = useGameSelection((state) => state.gameSelected);
+  const selectedAnimation = useGameSelection((state) => state.animation);
 
   /**
    * Animation
@@ -74,14 +81,23 @@ const SuperMario = () => {
    * Camera Follow the Cube
    */
   useFrame((state, delta) => {
-    const cubePosition = cubeRef.current.position;
-    const cameraTarget = new THREE.Vector3();
+    if (gameSelected === 'super mario') {
+      const cubePosition = cubeRef.current.position;
+      const cameraTarget = new THREE.Vector3();
 
-    cameraTarget.copy(cubePosition);
-    smoothCameraTarget.lerp(cubePosition, 5 * delta);
+      cameraTarget.copy(cubePosition);
+      smoothCameraTarget.lerp(cubePosition, 5 * delta);
 
-    state.camera.lookAt(smoothCameraTarget);
+      state.camera.lookAt(smoothCameraTarget);
+    }
   });
+
+  /**
+   * On click on animate button in Interface
+   */
+  useEffect(() => {
+    selectedAnimation === 'superMarioCubeAnimation' && cubeAnimation();
+  }, [selectedAnimation]);
 
   return (
     <group ref={cubeRef} position-y={0} scale={0}>
