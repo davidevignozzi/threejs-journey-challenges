@@ -26,15 +26,22 @@ const Experience = () => {
 
   const games = useGameSelection((state) => state.games);
   const gameIndex = useGameSelection((state) => state.gameIndex);
-  const gameSelected = games[gameIndex];
+  const gameSelected = useGameSelection((state) => state.gameSelected);
+  // const gameSelected = games[gameIndex];
 
-  const changeGame = useGameSelection((state) => state.changeGame);
+  const prevGame = useGameSelection((state) => state.prevGame);
+  const nextGame = useGameSelection((state) => state.nextGame);
 
   const debugGame = useControls('Change Game', {
-    changeGame: button(() => {
-      changeGame();
+    prevGame: button(() => {
+      prevGame();
+    }),
+    nextGame: button(() => {
+      nextGame();
     })
   });
+
+  console.log(gameIndex, gameSelected);
 
   return (
     <>

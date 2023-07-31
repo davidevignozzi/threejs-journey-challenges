@@ -4,14 +4,17 @@ import { Leva, useControls } from 'leva';
 import { Perf } from 'r3f-perf';
 import { Suspense } from 'react';
 import { Loader } from '@react-three/drei';
+import Interface from './compontents/Interface';
 
 function App() {
   /**
    * Tweek it in leva to make Perf Visible
    */
   const { perfVisible } = useControls({
-    perfVisible: true
+    perfVisible: false
   });
+
+  const debugMode = false;
 
   return (
     <>
@@ -23,6 +26,7 @@ function App() {
           <Experience />
         </Suspense>
       </Canvas>
+      <Interface />
       <Loader />
     </>
   );

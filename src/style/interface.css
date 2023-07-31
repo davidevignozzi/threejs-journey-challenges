@@ -1,0 +1,19 @@
+#interface {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  bottom: 5%;
+}
+
+.controls {
+}
+
+.controls button {
+  width: 4rem;
+  height: 4rem;
+  background-color: #f0f0f0;
+  border: none;
+  border-radius: 99%;
+
+  cursor: pointer;
+}
