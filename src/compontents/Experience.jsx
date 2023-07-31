@@ -1,12 +1,13 @@
 import { Environment, OrbitControls } from '@react-three/drei';
 import { Bloom, EffectComposer } from '@react-three/postprocessing';
 import { Physics } from '@react-three/rapier';
+import useGameSelection from '../stores/useGameSelection';
 import Gameboy from './Gameboy';
 import Base from './Base';
 import DragonEvolved from './DragonEvolved';
 import Tetris from './Tetris';
 import SuperMario from './SuperMario';
-import useGameSelection from '../stores/useGameSelection';
+import Title from './Title';
 import { button, useControls } from 'leva';
 
 const Experience = () => {
@@ -26,8 +27,6 @@ const Experience = () => {
   const games = useGameSelection((state) => state.games);
   const gameIndex = useGameSelection((state) => state.gameIndex);
   const gameSelected = games[gameIndex];
-
-  console.log('🚀 ~ Experience ~ gameSelected:', gameSelected);
 
   const changeGame = useGameSelection((state) => state.changeGame);
 
@@ -50,6 +49,8 @@ const Experience = () => {
       <Physics debug>
         <Base />
         <Gameboy />
+        <Title />
+
         <DragonEvolved />
         <Tetris />
         <SuperMario />
