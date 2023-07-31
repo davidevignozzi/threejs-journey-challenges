@@ -11,19 +11,6 @@ import SuperMario from './SuperMario';
 import Title from './Title';
 
 const Experience = () => {
-  /**
-   * Debug Camera Position
-   */
-  // const debugCamera = useControls('Camera Position', {
-  //   x: 5,
-  //   y: 5,
-  //   z: 5
-  // });
-
-  // useFrame((state) => {
-  //   state.camera.position.set(debugCamera.x, debugCamera.y, debugCamera.z);
-  // });
-
   const games = useGameSelection((state) => state.games);
   const gameIndex = useGameSelection((state) => state.gameIndex);
   const gameSelected = useGameSelection((state) => state.gameSelected);
@@ -40,8 +27,6 @@ const Experience = () => {
       nextGame();
     })
   });
-
-  // console.log(gameIndex, gameSelected);
 
   return (
     <>

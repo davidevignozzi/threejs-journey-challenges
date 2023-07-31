@@ -42,45 +42,8 @@ const Gameboy = () => {
   const { nodes } = useGLTF('models/gameboy.glb');
 
   /**
-   * Materials
-   */
-  const gameboyMaterial = new THREE.MeshStandardMaterial({
-    color: debugColor.gameboy,
-    roughness: 0.5
-  });
-
-  const primaryButtonsMaterial = new THREE.MeshStandardMaterial({
-    color: debugColor.primaryButtons,
-    roughness: 0.5
-  });
-
-  const secondaryButtonsMaterial = new THREE.MeshStandardMaterial({
-    color: debugColor.secondaryButtons,
-    roughness: 0.5
-  });
-
-  const joystickMaterial = new THREE.MeshStandardMaterial({
-    color: debugColor.joystick,
-    roughness: 0.5
-  });
-
-  const screenBorderMaterial = new THREE.MeshStandardMaterial({
-    color: debugColor.screenBorder,
-    roughness: 0.5
-  });
-
-  const screenMaterial = new THREE.MeshStandardMaterial({
-    color: debugColor.screen,
-    emissive: debugColor.screen,
-    emissiveIntensity: 0.75,
-    roughness: 0.5,
-    toneMapped: false
-  });
-
-  /**
    * Animations
    */
-
   const nextAnimation = () => {
     gsap.to(joystickRef?.current?.rotation, {
       z: -0.125,
@@ -105,32 +68,43 @@ const Gameboy = () => {
     <RigidBody type="fixed">
       <group position-y={-0.5} dispose={null}>
         {/* Gameboy */}
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.gameboy.geometry}
-          material={gameboyMaterial}
-        />
+        <mesh castShadow receiveShadow geometry={nodes.gameboy.geometry}>
+          <meshStandardMaterial
+            color={debugColor.gameboy}
+            roughness={0.5}
+          />
+        </mesh>
 
         {/* Gameboy - Screen Borer */}
         <mesh
           castShadow
           receiveShadow
           geometry={nodes.gameboyScreenBorder.geometry}
-          material={screenBorderMaterial}
           position={nodes.gameboyScreenBorder.position}
           scale={nodes.gameboyScreenBorder.scale}
-        />
+        >
+          <meshStandardMaterial
+            color={debugColor.screenBorder}
+            roughness={0.5}
+          />
+        </mesh>
 
         {/* Gameboy - Screen */}
         <mesh
           castShadow
           receiveShadow
           geometry={nodes.gameboyScreen.geometry}
-          material={screenMaterial}
           position={nodes.gameboyScreen.position}
           scale={nodes.gameboyScreen.scale}
-        />
+        >
+          <meshStandardMaterial
+            color={debugColor.screen}
+            emissive={debugColor.screen}
+            emissiveIntensity={0.75}
+            roughness={0.5}
+            toneMapped={false}
+          />
+        </mesh>
 
         {/* Gameboy - JoyStick */}
         <mesh
@@ -138,62 +112,86 @@ const Gameboy = () => {
           castShadow
           receiveShadow
           geometry={nodes.gameboyJoystick.geometry}
-          material={joystickMaterial}
           position={nodes.gameboyJoystick.position}
           scale={nodes.gameboyJoystick.scale}
-        />
+        >
+          <meshStandardMaterial
+            color={debugColor.joystick}
+            roughness={0.5}
+          />
+        </mesh>
 
         {/* Gameboy - A */}
         <mesh
           castShadow
           receiveShadow
           geometry={nodes.gameboyA.geometry}
-          material={primaryButtonsMaterial}
           position={nodes.gameboyA.position}
           scale={nodes.gameboyA.scale}
-        />
+        >
+          <meshStandardMaterial
+            color={debugColor.primaryButtons}
+            roughness={0.5}
+          />
+        </mesh>
 
         {/* Gameboy - B */}
         <mesh
           castShadow
           receiveShadow
           geometry={nodes.gameboyB.geometry}
-          material={primaryButtonsMaterial}
           position={nodes.gameboyB.position}
           scale={nodes.gameboyB.scale}
-        />
+        >
+          <meshStandardMaterial
+            color={debugColor.primaryButtons}
+            roughness={0.5}
+          />
+        </mesh>
 
         {/* Gameboy - Start */}
         <mesh
           castShadow
           receiveShadow
           geometry={nodes.gameboyStart.geometry}
-          material={secondaryButtonsMaterial}
           position={nodes.gameboyStart.position}
           rotation={nodes.gameboyStart.rotation}
           scale={nodes.gameboyStart.scale}
-        />
+        >
+          <meshStandardMaterial
+            color={debugColor.secondaryButtons}
+            roughness={0.5}
+          />
+        </mesh>
 
         {/* Gameboy - Select */}
         <mesh
           castShadow
           receiveShadow
           geometry={nodes.gameboySelect.geometry}
-          material={secondaryButtonsMaterial}
           position={nodes.gameboySelect.position}
           rotation={nodes.gameboySelect.rotation}
           scale={nodes.gameboySelect.scale}
-        />
+        >
+          <meshStandardMaterial
+            color={debugColor.secondaryButtons}
+            roughness={0.5}
+          />
+        </mesh>
 
         {/* Gameboy - Battery */}
         <mesh
           castShadow
           receiveShadow
           geometry={nodes.gameboyBattery.geometry}
-          material={nodes.gameboyBattery.material}
           position={nodes.gameboyBattery.position}
           scale={nodes.gameboyBattery.scale}
-        />
+        >
+          <meshStandardMaterial
+            color={debugColor.screenBorder}
+            roughness={0.5}
+          />
+        </mesh>
       </group>
     </RigidBody>
   );
