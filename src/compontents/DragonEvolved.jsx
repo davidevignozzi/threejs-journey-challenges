@@ -127,6 +127,7 @@ const DragonEvolved = () => {
   useEffect(() => {
     selectedAnimation === 'dragonEnterAnimation' && enterAnimation();
     selectedAnimation === 'dragonHideAnimation' && hideAnimation();
+    selectedAnimation === '' && hideAnimation();
   }, [selectedAnimation]);
 
   return (

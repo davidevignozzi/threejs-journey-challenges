@@ -49,15 +49,18 @@ export default create((set) => {
      * Animations
      *
      */
-    //Dragon
+    // Pokemon
     dragonEnterAnimation: () => set({ animation: 'dragonEnterAnimation' }),
     dragonHideAnimation: () => set({ animation: 'dragonHideAnimation' }),
 
     // Tetris
     tetrisFall: () => set({ animation: 'tetrisFall' }),
+    tetrisHide: () => set({ animation: 'tetrisHide' }),
 
     // Super Mario
     superMarioCubeAnimation: () =>
-      set({ animation: 'superMarioCubeAnimation' })
+      set({ animation: 'superMarioCubeAnimation' }),
+
+    clearAnimation: () => set({ animation: '' })
   };
 });

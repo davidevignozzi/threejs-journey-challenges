@@ -122,11 +122,16 @@ const Tetris = ({
     }
   };
 
+  const resetBlocks = () => {
+    setBlocks([]);
+  };
+
   /**
    * On click on animate button in Interface
    */
   useEffect(() => {
     selectedAnimation === 'tetrisFall' && tetrisAnimation();
+    selectedAnimation === 'tetrisHide' && resetBlocks();
   }, [selectedAnimation]);
 
   return (

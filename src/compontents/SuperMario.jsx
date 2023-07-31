@@ -31,6 +31,7 @@ const SuperMario = () => {
    * Use Game Selection
    */
   const gameSelected = useGameSelection((state) => state.gameSelected);
+  const clearAnimation = useGameSelection((state) => state.clearAnimation);
   const selectedAnimation = useGameSelection((state) => state.animation);
 
   /**
@@ -66,13 +67,18 @@ const SuperMario = () => {
      */
     gsap.to(cubeRef.current.rotation, {
       y: Math.PI * 4,
-      duration: 1.5,
+      duration: 2,
       ease: 'sine',
       onComplete: () => {
         /**
          * Reset the rotation
          */
         cubeRef.current.rotation.y = 0;
+
+        /**
+         * Clear animation to make it retweekable
+         */
+        clearAnimation();
       }
     });
   };
