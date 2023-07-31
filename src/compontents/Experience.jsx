@@ -6,6 +6,8 @@ import Base from './Base';
 import DragonEvolved from './DragonEvolved';
 import Tetris from './Tetris';
 import SuperMario from './SuperMario';
+import useGameSelection from '../stores/useGameSelection';
+import { button, useControls } from 'leva';
 
 const Experience = () => {
   /**
@@ -20,6 +22,20 @@ const Experience = () => {
   // useFrame((state) => {
   //   state.camera.position.set(debugCamera.x, debugCamera.y, debugCamera.z);
   // });
+
+  const games = useGameSelection((state) => state.games);
+  const gameIndex = useGameSelection((state) => state.gameIndex);
+  const gameSelected = games[gameIndex];
+
+  console.log('🚀 ~ Experience ~ gameSelected:', gameSelected);
+
+  const changeGame = useGameSelection((state) => state.changeGame);
+
+  const debugGame = useControls('Change Game', {
+    changeGame: button(() => {
+      changeGame();
+    })
+  });
 
   return (
     <>
