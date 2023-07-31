@@ -11,7 +11,9 @@ export default create((set) => {
 
     gameSelected: '',
 
-    gameboyPrevOrNext: '',
+    isDragonVisible: false,
+
+    isTetrisVisible: false,
 
     animation: '',
 
@@ -20,12 +22,18 @@ export default create((set) => {
         if (state.gameIndex === 0) {
           return {
             gameIndex: state.games.length - 1,
-            gameSelected: state.games[state.games.length - 1]
+            gameSelected: state.games[state.games.length - 1],
+            animation: '',
+            isDragonVisible: false,
+            isTetrisVisible: false
           };
         } else {
           return {
             gameIndex: state.gameIndex - 1,
-            gameSelected: state.games[state.gameIndex - 1]
+            gameSelected: state.games[state.gameIndex - 1],
+            animation: '',
+            isDragonVisible: false,
+            isTetrisVisible: false
           };
         }
       }),
@@ -35,12 +43,18 @@ export default create((set) => {
         if (state.gameIndex === state.games.length - 1) {
           return {
             gameIndex: 0,
-            gameSelected: state.games[0]
+            gameSelected: state.games[0],
+            animation: '',
+            isDragonVisible: false,
+            isTetrisVisible: false
           };
         } else {
           return {
             gameIndex: state.gameIndex + 1,
-            gameSelected: state.games[state.gameIndex + 1]
+            gameSelected: state.games[state.gameIndex + 1],
+            animation: '',
+            isDragonVisible: false,
+            isTetrisVisible: false
           };
         }
       }),
@@ -50,12 +64,16 @@ export default create((set) => {
      *
      */
     // Pokemon
-    dragonEnterAnimation: () => set({ animation: 'dragonEnterAnimation' }),
-    dragonHideAnimation: () => set({ animation: 'dragonHideAnimation' }),
+    dragonEnterAnimation: () =>
+      set({ animation: 'dragonEnterAnimation', isDragonVisible: true }),
+    dragonHideAnimation: () =>
+      set({ animation: 'dragonHideAnimation', isDragonVisible: false }),
 
     // Tetris
-    tetrisFall: () => set({ animation: 'tetrisFall' }),
-    tetrisHide: () => set({ animation: 'tetrisHide' }),
+    tetrisFall: () =>
+      set({ animation: 'tetrisFall', isTetrisVisible: true }),
+    tetrisHide: () =>
+      set({ animation: 'tetrisHide', isTetrisVisible: false }),
 
     // Super Mario
     superMarioCubeAnimation: () =>

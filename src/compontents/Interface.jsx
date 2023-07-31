@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import '../style/interface.css';
 import useGameSelection from '../stores/useGameSelection';
 import { GrFormPreviousLink, GrFormNextLink } from 'react-icons/gr';
@@ -9,11 +8,6 @@ const Interface = () => {
   const nextGame = useGameSelection((state) => state.nextGame);
 
   /**
-   * Clear
-   */
-  const clearAnimation = useGameSelection((state) => state.clearAnimation);
-
-  /**
    * Pokemon
    */
   const dragonEnterAnimation = useGameSelection(
@@ -22,12 +16,18 @@ const Interface = () => {
   const dragonHideAnimation = useGameSelection(
     (state) => state.dragonHideAnimation
   );
+  const isDragonVisible = useGameSelection(
+    (state) => state.isDragonVisible
+  );
 
   /**
    * Tetris
    */
   const tetrisFall = useGameSelection((state) => state.tetrisFall);
   const tetrisHide = useGameSelection((state) => state.tetrisHide);
+  const isTetrisVisible = useGameSelection(
+    (state) => state.isTetrisVisible
+  );
 
   /**
    * Mario
@@ -36,30 +36,21 @@ const Interface = () => {
     (state) => state.superMarioCubeAnimation
   );
 
-  const [isDragonInTheScene, setIsDragonInTheScene] = useState(false);
-  const [isTetrisInTheScene, setIsTetrisInTheScene] = useState(false);
-
   /**
    * Handle animation
    */
   const handleAnimation = () => {
     // Always Clear
-    clearAnimation();
 
     switch (gameSelected) {
       // pokemon
       case 'pokemon':
-        isDragonInTheScene
-          ? (dragonHideAnimation(), setIsDragonInTheScene(false))
-          : (dragonEnterAnimation(), setIsDragonInTheScene(true));
+        isDragonVisible ? dragonHideAnimation() : dragonEnterAnimation();
         break;
 
       // tetris
       case 'tetris':
-        isTetrisInTheScene
-          ? (tetrisHide(), setIsTetrisInTheScene(false))
-          : (tetrisFall(), setIsTetrisInTheScene(true));
-
+        isTetrisVisible ? tetrisHide() : tetrisFall();
         break;
 
       // super mario
@@ -67,29 +58,14 @@ const Interface = () => {
         superMarioCubeAnimation();
 
       default:
-        setIsDragonInTheScene(false);
         break;
     }
-  };
-
-  const handleNext = () => {
-    clearAnimation();
-    setIsDragonInTheScene(false);
-    setIsTetrisInTheScene(false);
-    nextGame();
-  };
-
-  const handlePrev = () => {
-    clearAnimation();
-    setIsDragonInTheScene(false);
-    setIsTetrisInTheScene(false);
-    prevGame();
   };
 
   return (
     <div id="interface">
       <div className="controls">
-        <button className="prev" onClick={handlePrev}>
+        <button className="prev" onClick={prevGame}>
           <GrFormPreviousLink />
         </button>
 
@@ -97,7 +73,7 @@ const Interface = () => {
           A
         </button>
 
-        <button className="next" onClick={handleNext}>
+        <button className="next" onClick={nextGame}>
           <GrFormNextLink />
         </button>
       </div>
