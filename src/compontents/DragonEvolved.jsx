@@ -1,22 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
-import * as THREE from 'three';
-import { useGLTF, useAnimations } from '@react-three/drei';
 import { button, useControls } from 'leva';
-import { gsap } from 'gsap';
+import * as THREE from 'three';
 import { useFrame } from '@react-three/fiber';
+import { useGLTF, useAnimations } from '@react-three/drei';
+import { gsap } from 'gsap';
 
 const DragonEvolved = () => {
-  const group = useRef();
-  const dragonRef = useRef();
-  const dragonPositionRef = useRef();
-
-  const [smoothCameraTarget] = useState(() => new THREE.Vector3());
-
-  const { nodes, materials, animations } = useGLTF(
-    './models/Dragon_Evolved.gltf'
-  );
-  const { actions } = useAnimations(animations, group);
-
   /**
    * Trigger Animation
    */
@@ -28,6 +17,22 @@ const DragonEvolved = () => {
       hideAnimation();
     })
   });
+
+  /**
+   * States & Refs
+   */
+  const [smoothCameraTarget] = useState(() => new THREE.Vector3());
+  const group = useRef();
+  const dragonRef = useRef();
+  const dragonPositionRef = useRef();
+
+  /**
+   * Model
+   */
+  const { nodes, materials, animations } = useGLTF(
+    './models/Dragon_Evolved.gltf'
+  );
+  const { actions } = useAnimations(animations, group);
 
   /**
    * Flying Animation

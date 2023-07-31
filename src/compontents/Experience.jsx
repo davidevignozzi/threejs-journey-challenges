@@ -1,6 +1,7 @@
+import { button, useControls } from 'leva';
+import { Physics } from '@react-three/rapier';
 import { Environment, OrbitControls } from '@react-three/drei';
 import { Bloom, EffectComposer } from '@react-three/postprocessing';
-import { Physics } from '@react-three/rapier';
 import useGameSelection from '../stores/useGameSelection';
 import Gameboy from './Gameboy';
 import Base from './Base';
@@ -8,7 +9,6 @@ import DragonEvolved from './DragonEvolved';
 import Tetris from './Tetris';
 import SuperMario from './SuperMario';
 import Title from './Title';
-import { button, useControls } from 'leva';
 
 const Experience = () => {
   /**

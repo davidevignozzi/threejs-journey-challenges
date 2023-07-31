@@ -1,8 +1,8 @@
+import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
+import { CuboidCollider, RigidBody } from '@react-three/rapier';
 import { Text3D } from '@react-three/drei';
 import useGameSelection from '../stores/useGameSelection';
-import { CuboidCollider, RigidBody } from '@react-three/rapier';
-import { useEffect, useRef } from 'react';
 
 const Title = () => {
   /**

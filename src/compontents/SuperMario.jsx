@@ -1,8 +1,8 @@
 import { useRef, useState } from 'react';
+import { button, useControls } from 'leva';
 import * as THREE from 'three';
 import { useFrame } from '@react-three/fiber';
 import { useGLTF } from '@react-three/drei';
-import { button, useControls } from 'leva';
 import { gsap } from 'gsap';
 
 const SuperMario = () => {
@@ -16,16 +16,15 @@ const SuperMario = () => {
   });
 
   /**
-   * Nodes
+   * States & Ref
    */
-  const { nodes } = useGLTF('/models/mario.glb');
-
-  /**
-   * Ref
-   */
+  const [smoothCameraTarget] = useState(() => new THREE.Vector3());
   const cubeRef = useRef();
 
-  const [smoothCameraTarget] = useState(() => new THREE.Vector3());
+  /**
+   * Model
+   */
+  const { nodes } = useGLTF('/models/mario.glb');
 
   /**
    * Animation

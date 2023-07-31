@@ -1,9 +1,9 @@
 import { useRef } from 'react';
-import * as THREE from 'three';
-import { useGLTF } from '@react-three/drei';
 import { useControls, button } from 'leva';
-import { gsap } from 'gsap';
+import * as THREE from 'three';
 import { RigidBody } from '@react-three/rapier';
+import { useGLTF } from '@react-three/drei';
+import { gsap } from 'gsap';
 
 const Gameboy = () => {
   /**
@@ -32,7 +32,7 @@ const Gameboy = () => {
   //-- End Debug
 
   /**
-   * Refs
+   * States & Refs
    */
   const joystickRef = useRef();
 

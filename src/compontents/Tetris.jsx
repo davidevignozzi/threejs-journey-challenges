@@ -1,6 +1,6 @@
-import { RigidBody } from '@react-three/rapier';
+import { useState } from 'react';
 import { button, useControls } from 'leva';
-import { useMemo, useState } from 'react';
+import { RigidBody } from '@react-three/rapier';
 
 const scale = 0.5;
 const positionY = 4;
