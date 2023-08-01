@@ -35,7 +35,11 @@
 
 .animate {
   margin: 0 1rem;
-  background-color: #f65353 !important;
-  color: #f0f0f0;
   font-size: 1.25rem;
+}
+
+.bg-red {
+  background: #f65353 !important;
+  color: #f0f0f0;
+  transition: all 0.16s ease-in;
 }

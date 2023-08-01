@@ -1,8 +1,15 @@
+import { useState, useEffect, useRef } from 'react';
 import '../style/interface.css';
 import useGameSelection from '../stores/useGameSelection';
 import { GrFormPreviousLink, GrFormNextLink } from 'react-icons/gr';
 
 const Interface = () => {
+  const [isGameSelected, setIsGameSelected] = useState(false);
+  const buttonAnimation = useRef();
+
+  /**
+   * Use Game Selection
+   */
   const gameSelected = useGameSelection((state) => state.gameSelected);
   const prevGame = useGameSelection((state) => state.prevGame);
   const nextGame = useGameSelection((state) => state.nextGame);
@@ -62,6 +69,12 @@ const Interface = () => {
     }
   };
 
+  useEffect(() => {
+    if (gameSelected !== '') {
+      console.log(buttonAnimation.current);
+    }
+  }, [gameSelected]);
+
   return (
     <div id="interface">
       <div className="controls">
@@ -69,7 +82,12 @@ const Interface = () => {
           <GrFormPreviousLink />
         </button>
 
-        <button onClick={handleAnimation} className="animate">
+        <button
+          ref={buttonAnimation}
+          // className="animate"
+          className={`animate ${gameSelected !== '' && 'bg-red'}`}
+          onClick={handleAnimation}
+        >
           A
         </button>
 
