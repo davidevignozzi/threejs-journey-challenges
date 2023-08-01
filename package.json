@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "deploy": "vercel --prod",
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
@@ -21,6 +22,7 @@
     "react-dom": "^18.2.0",
     "react-icons": "^4.10.1",
     "three": "^0.154.0",
+    "vercel": "^31.2.1",
     "zustand": "^4.3.9"
   },
   "devDependencies": {
