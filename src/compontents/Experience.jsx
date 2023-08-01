@@ -30,7 +30,7 @@ const Experience = () => {
 
   return (
     <>
-      <OrbitControls enablePan={false} />
+      <OrbitControls enablePan={false} maxPolarAngle={Math.PI / 2} />
 
       <Environment preset="apartment" />
 
@@ -38,7 +38,9 @@ const Experience = () => {
         <Bloom mipmapBlur luminanceThreshold={1.25} />
       </EffectComposer>
 
-      <Physics debug>
+      <Physics
+      // debug
+      >
         <Base />
         <Gameboy />
         <Title />

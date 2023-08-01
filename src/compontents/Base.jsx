@@ -3,7 +3,8 @@ import { useControls } from 'leva';
 
 const Base = () => {
   const baseColor = useControls('Base Color', {
-    color: '#ffffff'
+    color: '#ffefa4'
+    // '#ffe240'
   });
 
   return (
