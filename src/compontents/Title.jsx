@@ -16,6 +16,10 @@ const Title = () => {
     })
   });
 
+  const titleColor = useControls('Title Color', {
+    color: '#ffffff'
+  });
+
   /**
    * States & Refs
    */
@@ -87,7 +91,7 @@ const Title = () => {
           size={1.5}
         >
           {gameSelected}
-          <meshStandardMaterial />
+          <meshStandardMaterial color={titleColor.color} />
         </Text3D>
       </RigidBody>
     </group>
