@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useRef } from 'react';
 import '../style/interface.css';
 import useGameSelection from '../stores/useGameSelection';
 import { GrFormPreviousLink, GrFormNextLink } from 'react-icons/gr';
@@ -68,12 +68,6 @@ const Interface = () => {
         break;
     }
   };
-
-  useEffect(() => {
-    if (gameSelected !== '') {
-      console.log(buttonAnimation.current);
-    }
-  }, [gameSelected]);
 
   return (
     <div id="interface">

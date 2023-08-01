@@ -30,7 +30,7 @@ const Experience = () => {
 
   return (
     <>
-      <OrbitControls />
+      <OrbitControls enablePan={false} />
 
       <Environment preset="apartment" />
 
