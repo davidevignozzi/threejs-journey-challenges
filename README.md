@@ -4,4 +4,4 @@
 
 ## The perfect opportunity to practice, create awesome projects and have fun.
 
-https://threejs-journey-challenge-gameboy.vercel.app/
+https://threejs-journey-challenges.vercel.app/
