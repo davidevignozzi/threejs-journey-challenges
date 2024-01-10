@@ -1,7 +1,5 @@
-# Three.js Journey Challenge #001
+# Three.js Journey Challenge
 
-# Theme: Game Boy 🕹️
+# How it works each branch has a challenge:
 
-## The perfect opportunity to practice, create awesome projects and have fun.
-
-https://threejs-journey-challenge-gameboy.vercel.app/
+    01. Theme: Game Boy 🕹️
